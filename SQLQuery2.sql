@@ -44,3 +44,20 @@ alter table employee_payroll add PhoneNumber bigint;
 alter table employee_payroll add Department varchar(250) not null default 'HR';
 alter table employee_payroll add Address varchar(250) default 'bangaluru';
 select * from employee_payroll;
+------updating values of created colomns------
+update employee_payroll set PhoneNumber = '1252453698',Address = 'Chennai' where Name = 'Madhuri';
+update employee_payroll set PhoneNumber = '2214587875',Address = 'Banglore',Department = 'Sales' where Name = 'Akhshya';
+update employee_payroll set PhoneNumber = '9817753647',Address = 'Bhubaneswar' where Name = 'Akhil';
+update employee_payroll set PhoneNumber = '7375787969',Address = 'Hyderabad', Department = 'Customer Service' where Name = 'kabir';
+
+---Uc9---
+---RenameColomn name in existing table(Salary renamed as Basic pay)---
+Exec sp_rename 'employee_payroll.Salary', 'BasicPay';
+alter table employee_payroll add TaxablePay float, Deduction float,IncomeTax float,NetPay float;
+Update employee_payroll set Deduction = '4000' where Department = 'HR';
+Update employee_payroll set Deduction = '3000' where Department = 'Sales';
+Update employee_payroll set Deduction = '2000' where Department = 'Customer Service';
+Update employee_payroll set NetPay = (BasicPay-Deduction);
+Update employee_payroll set TaxablePay = '1000';
+Update employee_payroll set IncomeTax = '200';
+select * from employee_payroll;
