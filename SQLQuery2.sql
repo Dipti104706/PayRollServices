@@ -61,3 +61,9 @@ Update employee_payroll set NetPay = (BasicPay-Deduction);
 Update employee_payroll set TaxablePay = '1000';
 Update employee_payroll set IncomeTax = '200';
 select * from employee_payroll;
+
+---------UC10---------
+------Create duplicate of person-------
+INSERT INTO employee_payroll(Name,BasicPay,StartDate,Gender,PhoneNumber,Department,Address,TaxablePay,Deduction,IncomeTax,NetPay) VALUES('Terissa','525245','2018/03/01','F','7345787969','Sales','Chennai','1000','4000','200','522245');
+INSERT INTO employee_payroll(Name,BasicPay,StartDate,Gender,PhoneNumber,Department,Address,TaxablePay,Deduction,IncomeTax,NetPay) VALUES('Terissa','525245','2018/03/01','F','7345787969','Marketing','Chennai','0','0','0','0');
+---------Two ids for terissa created for single person, so to remove this we use ER disgram-------
